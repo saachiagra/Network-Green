@@ -8,17 +8,17 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
+      background-color: #f9f9f9;
     }
     
     header {
-      background-color: #117325;
+      background-color: #4285f4;
       padding: 20px;
       text-align: center;
     }
     
     h1 {
-      color: #040404;
+      color: #fff;
       font-size: 36px;
       margin: 0;
     }
@@ -96,6 +96,64 @@
           document.querySelector(target).classList.add('active');
         });
       });
+
+      // Handle search form submission
+      var searchForm = document.querySelector('#searchForm');
+      var resultsList = document.querySelector('#results');
+
+      searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var zipcodeInput = document.querySelector('#zipcode');
+        var zipcode = zipcodeInput.value.trim();
+
+        // Perform search based on the entered ZIP code
+        var results = searchRestaurants(zipcode);
+
+        // Display the search results
+        displayResults(results);
+      });
+
+      // Function to perform the restaurant search based on ZIP code
+      function searchRestaurants(zipcode) {
+        // Replace with your own logic to search the database or API for restaurants in the given ZIP code
+        // Return an array of restaurant objects matching the search criteria
+        // For demonstration purposes, a mock array of results is returned
+        return [
+          { name: 'Restaurant 1', address: '123 Main St', zipcode: '12345' },
+          { name: 'Restaurant 2', address: '456 Elm St', zipcode: '23456' },
+          { name: 'Restaurant 3', address: '789 Oak St', zipcode: '34567' }
+        ];
+      }
+
+      // Function to display the search results
+      function displayResults(results) {
+        // Clear the previous search results
+        resultsList.innerHTML = '';
+
+        // If there are no results, display a message
+        if (results.length === 0) {
+          var message = document.createElement('p');
+          message.textContent = 'No restaurants found.';
+          resultsList.appendChild(message);
+        } else {
+          // Loop through the results and create list items for each restaurant
+          results.forEach(function(result) {
+            var listItem = document.createElement('li');
+            var name = document.createElement('strong');
+            name.textContent = result.name;
+            var address = document.createElement('span');
+            address.textContent = result.address;
+            var zipcode = document.createElement('span');
+            zipcode.textContent = result.zipcode;
+            listItem.appendChild(name);
+            listItem.appendChild(document.createElement('br'));
+            listItem.appendChild(address);
+            listItem.appendChild(document.createElement('br'));
+            listItem.appendChild(zipcode);
+            resultsList.appendChild(listItem);
+          });
+        }
+      }
     });
   </script>
 </head>
@@ -110,18 +168,14 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#donate">Donate</a></li>
-
+      <li><a href="#search">Search</a></li>
     </ul>
   </nav>
 
   <main>
     <section id="home" class="tab-content active">
       <h2>Welcome to Network Green</h2>
-      <p>Network Green is a non-profit organization that allows places with food insecurity to request food from places such as restaurants. We want to help reduce food wastage in Austin and help the community, give restautants an incentive to donate their extra food, and help food pantries and homeless shelters. We are choosing to work as a
-        nonprofit to benefit the Austin
-        community as much as we
-        can.</p>
+      <p>This is the home section of the website.</p>
     </section>
 
     <section id="about" class="tab-content">
@@ -136,16 +190,17 @@
 
     <section id="contact" class="tab-content">
       <h2>Contact Us</h2>
-      <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969
-        <br> Parth Sanagani: psangani06@gmail.com (408) 667-7794 
-        <br>  Saachi Agrawal: saachiagra@gmail.com (512) 718-7472  
-        <br> Devin: devineth@hotmail.com (512) 695-4996
-      </p>
+      <p>Provide contact information or a contact form for users to reach out.</p>
     </section>
-    <section id="donate" class="tab-content">
-      <h2>Donate!</h2>
-      <p>If you'd like to make a donation, support us at the link below!
-        *enter link*.</p>
+
+    <section id="search" class="tab-content">
+      <h2>Restaurant Search</h2>
+      <form id="searchForm">
+        <label for="zipcode">Enter ZIP Code:</label>
+        <input type="text" id="zipcode" required>
+        <button type="submit">Search</button>
+      </form>
+      <ul id="results"></ul>
     </section>
   </main>
 
