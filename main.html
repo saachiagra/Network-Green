@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Donation App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Food Donation App</h1>
+
+  <form id="donationForm">
+    <label for="donorName">Your Name:</label>
+    <input type="text" id="donorName" required>
+
+    <label for="donorEmail">Your Email:</label>
+    <input type="email" id="donorEmail" required>
+
+    <label for="foodDescription">Food Description:</label>
+    <textarea id="foodDescription" required></textarea>
+
+    <input type="submit" value="Donate">
+  </form>
+
+  <div id="donationList">
+    <h2>Recent Donations:</h2>
+    <ul id="donations"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
