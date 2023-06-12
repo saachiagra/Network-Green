@@ -1,148 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Food Donation App</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Network Green</title>
   <style>
+    /* Add custom styles to mimic Google Sites color scheme */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #f9f9f9;
     }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
+    
+    header {
+      background-color: #4285f4;
       padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-    }
-
-    h1 {
-      color: #333;
-      font-size: 36px;
       text-align: center;
-      margin-bottom: 30px;
     }
-
-    label {
-      display: block;
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 10px;
+    
+    h1 {
+      color: #fff;
+      font-size: 36px;
+      margin: 0;
     }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      background-color: #f8f8f8;
-      margin-bottom: 20px;
-      resize: none;
+    
+    nav {
+      background-color: #f9f9f9;
+      padding: 10px;
     }
-
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-
-    #donationList {
-      margin-top: 30px;
-    }
-
-    h2 {
-      color: #333;
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    ul#donations {
+    
+    nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
-    }
-
-    ul#donations li {
-      background-color: #f9f9f9;
-      padding: 16px;
-      border-radius: 4px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       display: flex;
-      align-items: center;
+      justify-content: center;
     }
-
-    .donation-info {
-      flex: 1;
+    
+    nav ul li {
+      margin: 0 10px;
     }
-
-    .donor-name {
-      font-weight: bold;
-    }
-
-    .donor-email {
-      color: #777;
-    }
-
-    .food-description {
+    
+    nav ul li a {
       color: #555;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+    
+    nav ul li a:hover {
+      color: #000;
+    }
+    
+    main {
+      padding: 20px;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    footer {
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all tab links and tab content
+      var tabLinks = document.querySelectorAll('nav a');
+      var tabContents = document.querySelectorAll('.tab-content');
+
+      // Add event listeners to the tab links
+      tabLinks.forEach(function(tabLink) {
+        tabLink.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          // Remove active class from all tab links and tab contents
+          tabLinks.forEach(function(link) {
+            link.classList.remove('active');
+          });
+          tabContents.forEach(function(content) {
+            content.classList.remove('active');
+          });
+
+          // Add active class to the clicked tab link and corresponding tab content
+          var target = this.getAttribute('href');
+          this.classList.add('active');
+          document.querySelector(target).classList.add('active');
+        });
+      });
+    });
+  </script>
 </head>
 <body>
-  <div class="container">
-    <h1>Food Donation App</h1>
+  <header>
+    <h1>Network Green</h1>
+  </header>
 
-    <form id="donationForm">
-      <label for="donorName">Your Name:</label>
-      <input type="text" id="donorName" required>
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-      <label for="donorEmail">Your Email:</label>
-      <input type="email" id="donorEmail" required>
+  <main>
+    <section id="home" class="tab-content active">
+      <h2>Welcome to Network Green</h2>
+      <p>This is the home section of the website.</p>
+    </section>
 
-      <label for="foodDescription">Food Description:</label>
-      <textarea id="foodDescription" required></textarea>
+    <section id="about" class="tab-content">
+      <h2>About Network Green</h2>
+      <p>Blah blah Network Green does blah.</p>
+    </section>
 
-      <input type="submit" value="Donate">
-    </form>
+    <section id="services" class="tab-content">
+      <h2>Our Services</h2>
+      <p>Here you can describe the services provided by Network Green.</p>
+    </section>
 
-    <div id="donationList">
-      <h2>Recent Donations:</h2>
-      <ul id="donations">
-        <li>
-          <div class="donation-info">
-            <span class="donor-name">John Doe</span>
-            <span class="donor-email">johndoe@example.com</span>
-          </div>
-          <p class="food-description">Canned vegetables and pasta</p>
-        </li>
-        <li>
-          <div class="donation-info">
-            <span class="donor-name">Jane Smith</span>
-            <span class="donor-email">janesmith@example.com</span>
-          </div>
-          <p class="food-description">Fresh fruits and bread</p>
-        </li>
-      </ul>
-    </div>
-  </div>
+    <section id="contact" class="tab-content">
+      <h2>Contact Us</h2>
+      <p>Provide contact information or a contact form for users to reach out.</p>
+    </section>
+  </main>
 
-  <script src="script.js"></script>
+  <footer>
+    &copy; 2023 Network Green. All rights reserved.
+  </footer>
 </body>
 </html>
