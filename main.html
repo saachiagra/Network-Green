@@ -41,6 +41,7 @@
       text-decoration: none;
       color: #555;
       font-size: 18px;
+      transition: color 0.3s ease;
     }
 
     nav ul li a:hover {
@@ -52,61 +53,131 @@
     }
 
     /* Rest of the CSS styles */
-    /* ... Paste the rest of your CSS styles here ... */
 
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    #donation-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-top: 20px;
+    }
+
+    #donation-list li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #f4f4f4;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
   </style>
   <script>
     // JavaScript code for handling form submissions
     document.addEventListener("DOMContentLoaded", function() {
+      const donateFoodForm = document.getElementById("donate-food-form");
+      const donateMoneyForm = document.getElementById("donate-money-form");
+      const volunteerForm = document.getElementById("volunteer-form");
       const donationList = document.getElementById("donation-list");
 
-      // Array to store the donation history
-      const donations = [];
+      donateFoodForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = donateFoodForm.elements["name"].value;
+        const email = donateFoodForm.elements["email"].value;
+        const foodDescription = donateFoodForm.elements["food-description"].value;
 
-      function displayDonationHistory() {
-        // Clear the existing list items
-        donationList.innerHTML = "";
+        // Handle the form submission here (e.g., send data to the server)
+        console.log("Donate Food Form Submitted");
+        console.log("Name: " + name);
+        console.log("Email: " + email);
+        console.log("Food Description: " + foodDescription);
 
-        // Loop through the donations array and create a list item for each donation
-        for (const donation of donations) {
-          const listItem = document.createElement("li");
-          listItem.textContent = donation;
-          donationList.appendChild(listItem);
-        }
-      }
+        // Create a new list item to display the donation information
+        const listItem = document.createElement("li");
+        listItem.textContent = name + " donated " + foodDescription;
+        donationList.appendChild(listItem);
 
-      // Handle the form submissions
-      function handleFormSubmission(formId, donationType) {
-        const form = document.getElementById(formId);
+        // Reset the form
+        donateFoodForm.reset();
+      });
 
-        form.addEventListener("submit", function(event) {
-          event.preventDefault();
-          const name = form.elements["name"].value;
-          const email = form.elements["email"].value;
-          const donationDetails = form.elements[donationType].value;
+      donateMoneyForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = donateMoneyForm.elements["name"].value;
+        const email = donateMoneyForm.elements["email"].value;
+        const amount = donateMoneyForm.elements["amount"].value;
 
-          // Handle the form submission here (e.g., send data to the server)
-          console.log(formId + " Submitted");
-          console.log("Name: " + name);
-          console.log("Email: " + email);
-          console.log(donationType + ": " + donationDetails);
+        // Handle the form submission here (e.g., send data to the server)
+        console.log("Donate Money Form Submitted");
+        console.log("Name: " + name);
+        console.log("Email: " + email);
+        console.log("Amount: " + amount);
 
-          // Add the donation information to the donations array
-          const donation = name + " donated " + donationDetails;
-          donations.push(donation);
+        // Create a new list item to display the donation information
+        const listItem = document.createElement("li");
+        listItem.textContent = name + " donated $" + amount;
+        donationList.appendChild(listItem);
 
-          // Display the updated donation history
-          displayDonationHistory();
+        // Reset the form
+        donateMoneyForm.reset();
+      });
 
-          // Reset the form
-          form.reset();
-        });
-      }
+      volunteerForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = volunteerForm.elements["name"].value;
+        const email = volunteerForm.elements["email"].value;
+        const availability = volunteerForm.elements["availability"].value;
 
-      // Handle form submissions for donate-food-form, donate-money-form, and volunteer-form
-      handleFormSubmission("donate-food-form", "food-description");
-      handleFormSubmission("donate-money-form", "amount");
-      handleFormSubmission("volunteer-form", "availability");
+        // Handle the form submission here (e.g., send data to the server)
+        console.log("Volunteer Form Submitted");
+        console.log("Name: " + name);
+        console.log("Email: " + email);
+        console.log("Availability: " + availability);
+
+        // Reset the form
+        volunteerForm.reset();
+      });
     });
   </script>
 </head>
@@ -115,11 +186,12 @@
     <h1>Food Donation App</h1>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="donate-food.html">Donate Food</a></li>
-        <li><a href="donate-money.html">Donate Money</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="donation-history.html">Donation History</a></li>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#donate-food">Donate Food</a></li>
+        <li><a href="#donate-money">Donate Money</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
+        <li><a href="#learn-more">Learn More</a></li>
+        <li><a href="#donation-history">Donation History</a></li>
       </ul>
     </nav>
   </header>
@@ -164,6 +236,12 @@
         <input type="text" name="availability" placeholder="Availability">
         <input type="submit" value="Volunteer">
       </form>
+    </section>
+
+    <section id="learn-more">
+      <h2>Learn More</h2>
+      <p>To learn more about our organization, please visit our website.</p>
+      <p>You can also follow us on social media to stay up-to-date on our latest news and events.</p>
     </section>
 
     <section id="donation-history">
