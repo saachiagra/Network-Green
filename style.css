@@ -1,40 +1,76 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  
-  h1, h2 {
-    text-align: center;
-  }
-  
-  form {
-    max-width: 400px;
-    margin: 20px auto;
-  }
-  
-  label, input, textarea {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  input[type="submit"] {
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    padding: 10px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 18px;
+}
+
+nav ul li a:hover {
+  color: #333;
+}
+
+nav ul li a.active {
+  color: #4CAF50;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+label,
+input,
+textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
