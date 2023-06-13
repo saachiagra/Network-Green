@@ -70,6 +70,25 @@
       color: #555;
       font-size: 14px;
     }
+    
+    /* Styles for the restaurant search */
+    #searchForm {
+      margin-bottom: 20px;
+    }
+    
+    #searchResults {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #searchResults li {
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -97,63 +116,51 @@
         });
       });
 
-      // Handle search form submission
-      var searchForm = document.querySelector('#searchForm');
-      var resultsList = document.querySelector('#results');
+      // Restaurant search functionality
+      var restaurants = [
+        { name: "Restaurant 1", zipCode: "78701" },
+        { name: "Restaurant 2", zipCode: "78702" },
+        { name: "Restaurant 3", zipCode: "78703" },
+        { name: "Restaurant 4", zipCode: "78704" },
+        { name: "Restaurant 5", zipCode: "78705" },
+        { name: "Restaurant 6", zipCode: "78706" },
+        { name: "Restaurant 7", zipCode: "78707" },
+        { name: "Restaurant 8", zipCode: "78708" },
+        { name: "Restaurant 9", zipCode: "78709" },
+        { name: "Restaurant 10", zipCode: "78710" },
+        { name: "Restaurant 11", zipCode: "78710" }
+      ];
+
+      var searchForm = document.getElementById('searchForm');
+      var searchResults = document.getElementById('searchResults');
 
       searchForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        var zipcodeInput = document.querySelector('#zipcode');
-        var zipcode = zipcodeInput.value.trim();
 
-        // Perform search based on the entered ZIP code
-        var results = searchRestaurants(zipcode);
+        // Clear previous search results
+        searchResults.innerHTML = '';
 
-        // Display the search results
-        displayResults(results);
-      });
+        // Get the search query
+        var searchQuery = document.getElementById('searchQuery').value;
 
-      // Function to perform the restaurant search based on ZIP code
-      function searchRestaurants(zipcode) {
-        // Replace with your own logic to search the database or API for restaurants in the given ZIP code
-        // Return an array of restaurant objects matching the search criteria
-        // For demonstration purposes, a mock array of results is returned
-        return [
-          { name: 'Restaurant 1', address: '123 Main St', zipcode: '12345' },
-          { name: 'Restaurant 2', address: '456 Elm St', zipcode: '23456' },
-          { name: 'Restaurant 3', address: '789 Oak St', zipcode: '34567' }
-        ];
-      }
+        // Perform search
+        var matchingRestaurants = restaurants.filter(function(restaurant) {
+          return restaurant.zipCode === searchQuery;
+        });
 
-      // Function to display the search results
-      function displayResults(results) {
-        // Clear the previous search results
-        resultsList.innerHTML = '';
-
-        // If there are no results, display a message
-        if (results.length === 0) {
-          var message = document.createElement('p');
-          message.textContent = 'No restaurants found.';
-          resultsList.appendChild(message);
-        } else {
-          // Loop through the results and create list items for each restaurant
-          results.forEach(function(result) {
+        // Display search results
+        if (matchingRestaurants.length > 0) {
+          matchingRestaurants.forEach(function(restaurant) {
             var listItem = document.createElement('li');
-            var name = document.createElement('strong');
-            name.textContent = result.name;
-            var address = document.createElement('span');
-            address.textContent = result.address;
-            var zipcode = document.createElement('span');
-            zipcode.textContent = result.zipcode;
-            listItem.appendChild(name);
-            listItem.appendChild(document.createElement('br'));
-            listItem.appendChild(address);
-            listItem.appendChild(document.createElement('br'));
-            listItem.appendChild(zipcode);
-            resultsList.appendChild(listItem);
+            listItem.textContent = restaurant.name;
+            searchResults.appendChild(listItem);
           });
+        } else {
+          var listItem = document.createElement('li');
+          listItem.textContent = 'No restaurants found for the provided zip code.';
+          searchResults.appendChild(listItem);
         }
-      }
+      });
     });
   </script>
 </head>
@@ -166,41 +173,37 @@
     <ul>
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="#restaurants">Restaurants</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#search">Search</a></li>
     </ul>
   </nav>
 
   <main>
     <section id="home" class="tab-content active">
       <h2>Welcome to Network Green</h2>
-      <p>This is the home section of the website.</p>
+      <p>This is the home section of Network Green.</p>
     </section>
 
     <section id="about" class="tab-content">
       <h2>About Network Green</h2>
-      <p>Blah blah Network Green does blah.</p>
+      <p>Network Green is a platform dedicated to promoting sustainable practices and connecting restaurants with food donation programs.</p>
     </section>
 
-    <section id="services" class="tab-content">
-      <h2>Our Services</h2>
-      <p>Here you can describe the services provided by Network Green.</p>
+    <section id="restaurants" class="tab-content">
+      <h2>Restaurants</h2>
+      <p>Enter a zip code to search for restaurants in that area:</p>
+      <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Enter a zip code" required>
+        <button type="submit">Search</button>
+      </form>
+      <ul id="searchResults"></ul>
     </section>
 
     <section id="contact" class="tab-content">
       <h2>Contact Us</h2>
-      <p>Provide contact information or a contact form for users to reach out.</p>
-    </section>
-
-    <section id="search" class="tab-content">
-      <h2>Restaurant Search</h2>
-      <form id="searchForm">
-        <label for="zipcode">Enter ZIP Code:</label>
-        <input type="text" id="zipcode" required>
-        <button type="submit">Search</button>
-      </form>
-      <ul id="results"></ul>
+      <p>For any inquiries or feedback, please contact us at:</p>
+      <p>Email: contact@networkgreen.com</p>
+      <p>Phone: 123-456-7890</p>
     </section>
   </main>
 
