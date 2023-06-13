@@ -1,257 +1,339 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Food Donation App</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Network Green</title>
   <style>
-    /* CSS styles for the header and navigation */
+    /* Add custom styles to mimic Google Sites color scheme */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #f9f9f9;
     }
-
+    
     header {
-      background-color: #fff;
+      background-color: #047329;
       padding: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
-
+    
     h1 {
+      color: #ffffff;
       font-size: 36px;
       margin: 0;
     }
-
+    
+    nav {
+      background-color: #f9f9f9;
+      padding: 10px;
+    }
+    
     nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       justify-content: center;
-      margin-top: 20px;
     }
-
+    
     nav ul li {
       margin: 0 10px;
     }
-
+    
     nav ul li a {
-      text-decoration: none;
       color: #555;
-      font-size: 18px;
-      transition: color 0.3s ease;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
     }
-
+    
     nav ul li a:hover {
-      color: #333;
+      color: #000;
     }
-
-    nav ul li a.active {
-      color: #4CAF50;
-    }
-
-    /* Rest of the CSS styles */
-
+    
     main {
-      max-width: 800px;
-      margin: 0 auto;
       padding: 20px;
     }
-
-    h2 {
-      font-size: 24px;
-      margin-top: 30px;
+    
+    .tab-content {
+      display: none;
     }
-
-    p {
-      line-height: 1.6;
+    
+    .tab-content.active {
+      display: block;
     }
-
-    form {
-      margin-top: 20px;
+    
+    footer {
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
     }
-
-    input[type="text"],
-    input[type="email"] {
-      width: 100%;
+    
+    /* Styles for the restaurant search */
+    #searchForm {
+      margin-bottom: 20px;
+    }
+    
+    #searchResults {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #searchResults li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
       padding: 10px;
       margin-bottom: 10px;
-      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       border-radius: 4px;
     }
 
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
+    .request-button {
+      background-color: #047329;
+      color: #ffffff;
+      padding: 5px 10px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
     }
 
-    input[type="submit"]:hover {
-      background-color: #45a049;
+    .request-button:hover {
+      background-color: #035e21;
     }
 
-    #donation-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      margin-top: 20px;
+    /* Additional styles for improved design */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    #donation-list li {
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background-color: #f4f4f4;
-      padding: 10px;
+    .hero {
+      background-image: url('https://example.com/hero-image.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
       text-align: center;
-      font-size: 14px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .section-content {
+      margin-bottom: 20px;
+    }
+
+    .section-content p {
+      margin-bottom: 10px;
     }
   </style>
   <script>
-    // JavaScript code for handling form submissions
-    document.addEventListener("DOMContentLoaded", function() {
-      const donateFoodForm = document.getElementById("donate-food-form");
-      const donateMoneyForm = document.getElementById("donate-money-form");
-      const volunteerForm = document.getElementById("volunteer-form");
-      const donationList = document.getElementById("donation-list");
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all tab links and tab content
+      var tabLinks = document.querySelectorAll('nav a');
+      var tabContents = document.querySelectorAll('.tab-content');
 
-      donateFoodForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        const name = donateFoodForm.elements["name"].value;
-        const email = donateFoodForm.elements["email"].value;
-        const foodDescription = donateFoodForm.elements["food-description"].value;
+      // Add event listeners to the tab links
+      tabLinks.forEach(function(tabLink) {
+        tabLink.addEventListener('click', function(event) {
+          event.preventDefault();
 
-        // Handle the form submission here (e.g., send data to the server)
-        console.log("Donate Food Form Submitted");
-        console.log("Name: " + name);
-        console.log("Email: " + email);
-        console.log("Food Description: " + foodDescription);
+          // Remove active class from all tab links and tab contents
+          tabLinks.forEach(function(link) {
+            link.classList.remove('active');
+          });
+          tabContents.forEach(function(content) {
+            content.classList.remove('active');
+          });
 
-        // Create a new list item to display the donation information
-        const listItem = document.createElement("li");
-        listItem.textContent = name + " donated " + foodDescription;
-        donationList.appendChild(listItem);
-
-        // Reset the form
-        donateFoodForm.reset();
+          // Add active class to the clicked tab link and corresponding tab content
+          var target = this.getAttribute('href');
+          this.classList.add('active');
+          document.querySelector(target).classList.add('active');
+        });
       });
 
-      donateMoneyForm.addEventListener("submit", function(event) {
+      // Restaurant search functionality
+      var restaurants = [
+        { name: "Restaurant 1", zipCode: "78701", address: ": 123 Main St" },
+        { name: "Restaurant 2", zipCode: "78702", address: ": 456 Elm St" },
+        { name: "Restaurant 3", zipCode: "78703", address: ": 789 Oak St" },
+        { name: "Restaurant 4", zipCode: "78704", address: ": 321 Pine St" },
+        { name: "Restaurant 5", zipCode: "78705", address: ": 987 Maple St" },
+        { name: "Restaurant 6", zipCode: "78706", address: ": 654 Birch St" },
+        { name: "Restaurant 7", zipCode: "78707", address: ": 246 Oak St" },
+        { name: "Restaurant 8", zipCode: "78708", address: ": 135 Elm St" },
+        { name: "Restaurant 9", zipCode: "78709", address: ": 975 Pine St" },
+        { name: "Restaurant 10", zipCode: "78710", address: ": 864 Maple St" },
+        { name: "Restaurant 11", zipCode: "78710", address: ": 865 Maple St" }
+      ];
+
+      var searchForm = document.getElementById('searchForm');
+      var searchResults = document.getElementById('searchResults');
+
+      searchForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        const name = donateMoneyForm.elements["name"].value;
-        const email = donateMoneyForm.elements["email"].value;
-        const amount = donateMoneyForm.elements["amount"].value;
 
-        // Handle the form submission here (e.g., send data to the server)
-        console.log("Donate Money Form Submitted");
-        console.log("Name: " + name);
-        console.log("Email: " + email);
-        console.log("Amount: " + amount);
+        // Clear previous search results
+        searchResults.innerHTML = '';
 
-        // Create a new list item to display the donation information
-        const listItem = document.createElement("li");
-        listItem.textContent = name + " donated $" + amount;
-        donationList.appendChild(listItem);
+        // Get the search query
+        var searchQuery = document.getElementById('searchQuery').value;
 
-        // Reset the form
-        donateMoneyForm.reset();
+        // Perform search
+        var matchingRestaurants = restaurants.filter(function(restaurant) {
+          return restaurant.zipCode === searchQuery;
+        });
+
+        // Display search results
+        if (matchingRestaurants.length > 0) {
+          matchingRestaurants.forEach(function(restaurant) {
+            var listItem = document.createElement('li');
+            var restaurantName = document.createElement('span');
+            var restaurantAddress = document.createElement('span');
+            var requestButton = document.createElement('button');
+
+            restaurantName.textContent = restaurant.name;
+            restaurantAddress.textContent = restaurant.address;
+            requestButton.textContent = 'Request Food';
+            requestButton.className = 'request-button';
+
+            listItem.appendChild(restaurantName);
+            listItem.appendChild(restaurantAddress);
+            listItem.appendChild(requestButton);
+
+            searchResults.appendChild(listItem);
+          });
+        } else {
+          var listItem = document.createElement('li');
+          listItem.textContent = 'No restaurants found for the provided zip code.';
+          searchResults.appendChild(listItem);
+        }
       });
 
-      volunteerForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        const name = volunteerForm.elements["name"].value;
-        const email = volunteerForm.elements["email"].value;
-        const availability = volunteerForm.elements["availability"].value;
+      // Request food functionality
+      searchResults.addEventListener('click', function(event) {
+        if (event.target.classList.contains('request-button')) {
+          var restaurantName = event.target.parentNode.querySelector('span:first-child').textContent;
+          var restaurantAddress = event.target.parentNode.querySelector('span:nth-child(2)').textContent;
 
-        // Handle the form submission here (e.g., send data to the server)
-        console.log("Volunteer Form Submitted");
-        console.log("Name: " + name);
-        console.log("Email: " + email);
-        console.log("Availability: " + availability);
+          // Prompt user for information
+          var nameOfLocation = prompt('Name of Location being requested for food:');
+          var addressOfLocation = prompt('Address of location:');
+          var yourName = prompt('Your name:');
+          var yourEmail = prompt('Your email:');
+          var amountOfFoodNeeded = prompt('Amount of food needed:');
 
-        // Reset the form
-        volunteerForm.reset();
+          // Perform the request action (replace with your desired logic)
+          alert('Requesting food from ' + restaurantName + restaurantAddress +
+            '\n\nRequest Details:' +
+            '\nName of Location: ' + nameOfLocation +
+            '\nAddress of Location: ' + addressOfLocation +
+            '\nYour Name: ' + yourName +
+            '\nYour Email: ' + yourEmail +
+            '\nAmount of Food Needed: ' + amountOfFoodNeeded);
+        }
       });
     });
   </script>
 </head>
 <body>
   <header>
-    <h1>Food Donation App</h1>
-    <nav>
-      <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#donate-food">Donate Food</a></li>
-        <li><a href="#donate-money">Donate Money</a></li>
-        <li><a href="#volunteer">Volunteer</a></li>
-        <li><a href="#learn-more">Learn More</a></li>
-        <li><a href="#donation-history">Donation History</a></li>
-      </ul>
-    </nav>
+    <h1>Network Green</h1>
   </header>
 
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#restaurants">Restaurants</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#request">Request</a></li>
+    </ul>
+  </nav>
+
   <main>
-    <section id="home">
-      <!-- Content for the "Home" section -->
-    </section>
+    <section id="home" class="tab-content active">
+  <div class="hero">
+    <h2 style="color: black;">Welcome to Network Green</h2>
+  </div>
+  <div class="container">
+    <h3 style="color: black;">About Network Green</h3>
+    <p style="color: black;">Network Green is a platform dedicated to promoting sustainable practices and connecting restaurants with food donation programs. We strive to reduce food wastage in Austin, help the community, and support local businesses.</p>
+    <h3 style="color: black;">How It Works</h3>
+    <p style="color: black;">Our platform connects restaurants that have surplus food with food pantries and homeless shelters in need. We provide a seamless way for restaurants to donate their excess food, ensuring that it reaches those who need it the most.</p>
+    <h3 style="color: black;">Why Donate</h3>
+    <p style="color: black;">By donating food, restaurants not only contribute to reducing food waste but also make a positive impact on the lives of individuals facing food insecurity. Join us in making Austin a more sustainable and compassionate community.</p>
+    <h3 style="color: black;">Get Involved</h3>
+    <p style="color: black;">Whether you're a restaurant owner, a food pantry representative, or an individual passionate about our cause, there are many ways to get involved. Contact us to learn more about volunteer opportunities, partnerships, and donations.</p>
+  </div>
+</section>
 
-    <section id="donate-food">
-      <h2>Donate Food</h2>
-      <p>You can donate food to us in a number of ways. You can bring food to our donation center, or you can mail it to us.</p>
-      <p>We accept all types of food, including canned goods, fresh produce, and non-perishables. We also accept monetary donations, which we use to buy food for those in need.</p>
-      <p>Thank you for your support!</p>
-      <form id="donate-food-form">
-        <input type="text" name="name" placeholder="Your Name">
-        <input type="email" name="email" placeholder="Your Email">
-        <input type="text" name="food-description" placeholder="Food Description">
-        <input type="submit" value="Donate">
+
+    <section id="restaurants" class="tab-content">
+      <h2>Restaurants</h2>
+      <p>Enter a zip code to search for restaurants in that area:</p>
+      <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Enter a zip code" required>
+        <button type="submit">Search</button>
       </form>
+      <ul id="searchResults"></ul>
     </section>
 
-    <section id="donate-money">
-      <h2>Donate Money</h2>
-      <p>Your donation will help us fight hunger. We use your donations to buy food for those in need, and to cover the costs of our operations.</p>
-      <p>Every dollar counts. Thank you for your support!</p>
-      <form id="donate-money-form">
-        <input type="text" name="name" placeholder="Your Name">
-        <input type="email" name="email" placeholder="Your Email">
-        <input type="text" name="amount" placeholder="Amount">
-        <input type="submit" value="Donate">
+    <section id="contact" class="tab-content">
+      <h2>Contact Us</h2>
+      <p>For any inquiries or feedback, please contact us at:</p>
+      <p>Email: contact@networkgreen.com</p>
+      <p>Phone: 123-456-7890</p>
+      <br>
+      <p>Contact info for each of the creators of this website:</p>
+      <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969</p>
+      <p>Parth Sanagani: psangani06@gmail.com (408) 667-7794</p>
+      <p>Saachi Agrawal: saachiagra@gmail.com (512) 718-7472</p>
+      <p>Devin: devineth@hotmail.com (512) 695-4996</p>
+    </section>
+
+    <section id="donate" class="tab-content">
+      <h2>Donate</h2>
+      <p>Support our mission by making a donation:</p>
+      <p>Bank: Network Green Bank</p>
+      <p>Account number: 1234567890</p>
+      <p>Routing number: 0987654321</p>
+    </section>
+
+    <section id="request" class="tab-content">
+      <h2>Request Food</h2>
+      <p>If you are in need of food, you can request it from the available restaurants:</p>
+      <p>Enter the details below to make a request:</p>
+      <form id="requestForm">
+        <input type="text" id="locationName" placeholder="Name of Location" required>
+        <input type="text" id="locationAddress" placeholder="Address" required>
+        <input type="text" id="yourName" placeholder="Your Name" required>
+        <input type="email" id="yourEmail" placeholder="Your Email" required>
+        <input type="number" id="foodAmount" placeholder="Amount of Food Needed" required>
+        <button type="submit">Submit Request</button>
       </form>
-    </section>
-
-    <section id="volunteer">
-      <h2>Volunteer</h2>
-      <p>There are many ways to volunteer with us. You can help us collect food, sort food, deliver food, or help with our fundraising events.</p>
-      <p>We are always looking for new volunteers. If you would like to volunteer, please visit our website.</p>
-      <form id="volunteer-form">
-        <input type="text" name="name" placeholder="Your Name">
-        <input type="email" name="email" placeholder="Your Email">
-        <input type="text" name="availability" placeholder="Availability">
-        <input type="submit" value="Volunteer">
-      </form>
-    </section>
-
-    <section id="learn-more">
-      <h2>Learn More</h2>
-      <p>To learn more about our organization, please visit our website.</p>
-      <p>You can also follow us on social media to stay up-to-date on our latest news and events.</p>
-    </section>
-
-    <section id="donation-history">
-      <h2>Donation History</h2>
-      <ul id="donation-list"></ul>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2023 Food Donation App. All rights reserved.</p>
+    &copy; 2023 Network Green. All rights reserved.
   </footer>
 </body>
 </html>
