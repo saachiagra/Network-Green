@@ -3,7 +3,6 @@
 <head>
   <title>Network Green</title>
   <style>
-    /*CSS code starts here
     /* Add custom styles to mimic Google Sites color scheme */
     body {
       font-family: Arial, sans-serif;
@@ -97,101 +96,120 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       border-radius: 4px;
     }
-    .request-button {
-  background-color: yellow;
-  margin-left: auto; 
-}
 
+    .request-button {
+      background-color: yellow;
+      margin-left: auto; 
+    }
   </style>
   <script>
-    //This is all Javascript code
     document.addEventListener('DOMContentLoaded', function() {
-  // Get all tab links and tab content
-  var tabLinks = document.querySelectorAll('nav a');
-  var tabContents = document.querySelectorAll('.tab-content');
+      // Get all tab links and tab content
+      var tabLinks = document.querySelectorAll('nav a');
+      var tabContents = document.querySelectorAll('.tab-content');
 
-  // Add event listeners to the tab links
-  tabLinks.forEach(function(tabLink) {
-    tabLink.addEventListener('click', function(event) {
-      event.preventDefault();
+      // Add event listeners to the tab links
+      tabLinks.forEach(function(tabLink) {
+        tabLink.addEventListener('click', function(event) {
+          event.preventDefault();
 
-      // Remove active class from all tab links and tab contents
-      tabLinks.forEach(function(link) {
-        link.classList.remove('active');
+          // Remove active class from all tab links and tab contents
+          tabLinks.forEach(function(link) {
+            link.classList.remove('active');
+          });
+          tabContents.forEach(function(content) {
+            content.classList.remove('active');
+          });
+
+          // Add active class to the clicked tab link and corresponding tab content
+          var target = this.getAttribute('href');
+          this.classList.add('active');
+          document.querySelector(target).classList.add('active');
+        });
       });
-      tabContents.forEach(function(content) {
-        content.classList.remove('active');
+
+      // Restaurant search functionality
+      var restaurants = [
+        { name: "Restaurant 1", zipCode: "78701", address: ": 123 Main St" },
+        { name: "Restaurant 2", zipCode: "78702", address: ": 456 Elm St" },
+        { name: "Restaurant 3", zipCode: "78703", address: ": 789 Oak St" },
+        { name: "Restaurant 4", zipCode: "78704", address: ": 321 Pine St" },
+        { name: "Restaurant 5", zipCode: "78705", address: ": 987 Maple St" },
+        { name: "Restaurant 6", zipCode: "78706", address: ": 654 Birch St" },
+        { name: "Restaurant 7", zipCode: "78707", address: ": 246 Oak St" },
+        { name: "Restaurant 8", zipCode: "78708", address: ": 135 Elm St" },
+        { name: "Restaurant 9", zipCode: "78709", address: ": 975 Pine St" },
+        { name: "Restaurant 10", zipCode: "78710", address: ": 864 Maple St" },
+        { name: "Restaurant 11", zipCode: "78710", address: ": 865 Maple St" }
+      ];
+
+      var searchForm = document.getElementById('searchForm');
+      var searchResults = document.getElementById('searchResults');
+
+      searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Clear previous search results
+        searchResults.innerHTML = '';
+
+        // Get the search query
+        var searchQuery = document.getElementById('searchQuery').value;
+
+        // Perform search
+        var matchingRestaurants = restaurants.filter(function(restaurant) {
+          return restaurant.zipCode === searchQuery;
+        });
+
+        // Display search results
+        if (matchingRestaurants.length > 0) {
+          matchingRestaurants.forEach(function(restaurant) {
+            var listItem = document.createElement('li');
+            var restaurantName = document.createElement('span');
+            var restaurantAddress = document.createElement('span');
+            var requestButton = document.createElement('button');
+
+            restaurantName.textContent = restaurant.name;
+            restaurantAddress.textContent = restaurant.address;
+            requestButton.textContent = 'Request Food';
+            requestButton.className = 'request-button';
+
+            listItem.appendChild(restaurantName);
+            listItem.appendChild(restaurantAddress);
+            listItem.appendChild(requestButton);
+
+            searchResults.appendChild(listItem);
+          });
+        } else {
+          var listItem = document.createElement('li');
+          listItem.textContent = 'No restaurants found for the provided zip code.';
+          searchResults.appendChild(listItem);
+        }
       });
 
-      // Add active class to the clicked tab link and corresponding tab content
-      var target = this.getAttribute('href');
-      this.classList.add('active');
-      document.querySelector(target).classList.add('active');
+      // Request food functionality
+      searchResults.addEventListener('click', function(event) {
+        if (event.target.classList.contains('request-button')) {
+          var restaurantName = event.target.parentNode.querySelector('span:first-child').textContent;
+          var restaurantAddress = event.target.parentNode.querySelector('span:nth-child(2)').textContent;
+
+          // Prompt user for information
+          var nameOfLocation = prompt('Name of Location being requested for food:');
+          var addressOfLocation = prompt('Address of location:');
+          var yourName = prompt('Your name:');
+          var yourEmail = prompt('Your email:');
+          var amountOfFoodNeeded = prompt('Amount of food needed:');
+
+          // Perform the request action (replace with your desired logic)
+          alert('Requesting food from ' + restaurantName + restaurantAddress +
+            '\n\nRequest Details:' +
+            '\nName of Location: ' + nameOfLocation +
+            '\nAddress of Location: ' + addressOfLocation +
+            '\nYour Name: ' + yourName +
+            '\nYour Email: ' + yourEmail +
+            '\nAmount of Food Needed: ' + amountOfFoodNeeded);
+        }
+      });
     });
-  });
-
-  // Restaurant search functionality
-  var restaurants = [
-    { name: "Restaurant 1", zipCode: "78701", address: ": 123 Main St" },
-    { name: "Restaurant 2", zipCode: "78702", address: ": 456 Elm St" },
-    { name: "Restaurant 3", zipCode: "78703", address: ": 789 Oak St" },
-    { name: "Restaurant 4", zipCode: "78704", address: ": 321 Pine St" },
-    { name: "Restaurant 5", zipCode: "78705", address: ": 987 Maple St" },
-    { name: "Restaurant 6", zipCode: "78706", address: ": 654 Birch St" },
-    { name: "Restaurant 7", zipCode: "78707", address: ": 246 Oak St" },
-    { name: "Restaurant 8", zipCode: "78708", address: ": 135 Elm St" },
-    { name: "Restaurant 9", zipCode: "78709", address: ": 975 Pine St" },
-    { name: "Restaurant 10", zipCode: "78710", address: ": 864 Maple St" },
-    { name: "Restaurant 11", zipCode: "78710", address: ": 865 Maple St" }
-
-  ];
-
-  var searchForm = document.getElementById('searchForm');
-  var searchResults = document.getElementById('searchResults');
-
-  searchForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Clear previous search results
-    searchResults.innerHTML = '';
-
-    // Get the search query
-    var searchQuery = document.getElementById('searchQuery').value;
-
-    // Perform search
-    var matchingRestaurants = restaurants.filter(function(restaurant) {
-      return restaurant.zipCode === searchQuery;
-    });
-
-    // Display search results
-    if (matchingRestaurants.length > 0) {
-    matchingRestaurants.forEach(function(restaurant) {
-      var listItem = document.createElement('li');
-      var restaurantName = document.createElement('span');
-      var restaurantAddress = document.createElement('span');
-      var requestButton = document.createElement('button');
-
-      restaurantName.textContent = restaurant.name;
-      restaurantAddress.textContent = restaurant.address;
-      requestButton.textContent = 'Request Food';
-      requestButton.className = 'request-button';
-
-      listItem.appendChild(restaurantName);
-      listItem.appendChild(restaurantAddress);
-      listItem.appendChild(requestButton);
-
-      searchResults.appendChild(listItem);
-    });
-    } else {
-      var listItem = document.createElement('li');
-      listItem.textContent = 'No restaurants found for the provided zip code.';
-      searchResults.appendChild(listItem);
-    }
-  });
-});
-
-
-    //HTML code starts here
   </script>
 </head>
 <body>
@@ -206,26 +224,23 @@
       <li><a href="#restaurants">Restaurants</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#donate">Donate</a></li>
+      <li><a href="#request">Request</a></li>
 
     </ul>
   </nav>
 
   <main>
-    <!--Content for the Home Tab-->
     <section id="home" class="tab-content active">
       <h2>Welcome to Network Green</h2>
       <p>This is the home section of Network Green.</p>
     </section>
 
-    <!--Content for the About Tab-->
     <section id="about" class="tab-content">
       <h2>About Network Green</h2>
       <p>Network Green is a platform dedicated to promoting sustainable practices and connecting restaurants with food donation programs.</p>
-      <p>We want to help reduce food wastage in Austin and help the community, give restautants an incentive to donate their extra food, and help food pantries and homeless shelters. We are choosing to work as a
-        nonprofit to benefit the Austin community as much as we can.</p>
+      <p>We want to help reduce food wastage in Austin and help the community, give restaurants an incentive to donate their extra food, and help food pantries and homeless shelters. We are choosing to work as a nonprofit to benefit the Austin community as much as we can.</p>
     </section>
 
-    <!--Content for the Restaurant Search Tab-->
     <section id="restaurants" class="tab-content">
       <h2>Restaurants</h2>
       <p>Enter a zip code to search for restaurants in that area:</p>
@@ -235,7 +250,7 @@
       </form>
       <ul id="searchResults"></ul>
     </section>
-    <!--Content for the Contact Tab-->
+
     <section id="contact" class="tab-content">
       <h2>Contact Us</h2>
       <p>For any inquiries or feedback, please contact us at:</p>
@@ -243,19 +258,22 @@
       <p>Phone: 123-456-7890</p>
       <br>
       <p>Contact info for each of the creators of this website:</p>
-        <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969</p>
-        <p>Parth Sanagani: psangani06@gmail.com (408) 667-7794</p>
-        <p>Saachi Agrawal: saachiagra@gmail.com (512) 718-7472 </p>   
-        <p>Devin: devineth@hotmail.com (512) 695-4996</p>
-      </p>
+      <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969</p>
+      <p>Parth Sanagani: psangani06@gmail.com (408) 667-7794</p>
+      <p>Saachi Agrawal: saachiagra@gmail.com (512) 718-7472</p>
+      <p>Devin: devineth@hotmail.com (512) 695-4996</p>
     </section>
-    <!--Content for the Donate Tab-->
+
     <section id="donate" class="tab-content">
       <h2>Donate</h2>
       <p>If you'd like to make a donation to help our program, donate with the link below!(insert link)</p>
     </section>
+    <section id="request" class="tab-content">
+      <h2>Request</h2>
+      <p></p>
+    </section>
   </main>
-    <!--Footer-->
+
   <footer>
     &copy; 2023 Network Green. All rights reserved.
   </footer>
