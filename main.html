@@ -3,6 +3,7 @@
 <head>
   <title>Network Green</title>
   <style>
+    /*CSS code starts here
     /* Add custom styles to mimic Google Sites color scheme */
     body {
       font-family: Arial, sans-serif;
@@ -12,13 +13,13 @@
     }
     
     header {
-      background-color: #4285f4;
+      background-color: #047329;
       padding: 20px;
       text-align: center;
     }
     
     h1 {
-      color: #fff;
+      color: #000000;
       font-size: 36px;
       margin: 0;
     }
@@ -91,6 +92,7 @@
     }
   </style>
   <script>
+    //This is all Javascript code
     document.addEventListener('DOMContentLoaded', function() {
       // Get all tab links and tab content
       var tabLinks = document.querySelectorAll('nav a');
@@ -117,6 +119,7 @@
       });
 
       // Restaurant search functionality
+      //TODO: Add actual restaurants and zip codes!
       var restaurants = [
         { name: "Restaurant 1", zipCode: "78701" },
         { name: "Restaurant 2", zipCode: "78702" },
@@ -162,6 +165,8 @@
         }
       });
     });
+
+    //HTML code starts here
   </script>
 </head>
 <body>
@@ -175,20 +180,27 @@
       <li><a href="#about">About</a></li>
       <li><a href="#restaurants">Restaurants</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#donate">Donate</a></li>
+
     </ul>
   </nav>
 
   <main>
+    <!--Content for the Home Tab-->
     <section id="home" class="tab-content active">
       <h2>Welcome to Network Green</h2>
       <p>This is the home section of Network Green.</p>
     </section>
 
+    <!--Content for the About Tab-->
     <section id="about" class="tab-content">
       <h2>About Network Green</h2>
       <p>Network Green is a platform dedicated to promoting sustainable practices and connecting restaurants with food donation programs.</p>
+      <p>We want to help reduce food wastage in Austin and help the community, give restautants an incentive to donate their extra food, and help food pantries and homeless shelters. We are choosing to work as a
+        nonprofit to benefit the Austin community as much as we can.</p>
     </section>
 
+    <!--Content for the Restaurant Search Tab-->
     <section id="restaurants" class="tab-content">
       <h2>Restaurants</h2>
       <p>Enter a zip code to search for restaurants in that area:</p>
@@ -198,15 +210,27 @@
       </form>
       <ul id="searchResults"></ul>
     </section>
-
+    <!--Content for the Contact Tab-->
     <section id="contact" class="tab-content">
       <h2>Contact Us</h2>
       <p>For any inquiries or feedback, please contact us at:</p>
       <p>Email: contact@networkgreen.com</p>
       <p>Phone: 123-456-7890</p>
+      <br>
+      <p>Contact info for each of the creators of this website:</p>
+        <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969</p>
+        <p>Parth Sanagani: psangani06@gmail.com (408) 667-7794</p>
+        <p>Saachi Agrawal: saachiagra@gmail.com (512) 718-7472 </p>   
+        <p>Devin: devineth@hotmail.com (512) 695-4996</p>
+      </p>
+    </section>
+    <!--Content for the Donate Tab-->
+    <section id="donate" class="tab-content">
+      <h2>Donate</h2>
+      <p>If you'd like to make a donation to help our program, donate with the link below!(insert link)</p>
     </section>
   </main>
-
+    <!--Footer-->
   <footer>
     &copy; 2023 Network Green. All rights reserved.
   </footer>
