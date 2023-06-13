@@ -81,90 +81,115 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
     
     #searchResults li {
+      display: flex;
+      justify-content: space-between; /* Add space between restaurant name/address and button */
+      align-items: center; /* Center items vertically */
+      width: 100%; /* Take up the full width of the container */
       background-color: #f9f9f9;
       padding: 10px;
       margin-bottom: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       border-radius: 4px;
     }
+    .request-button {
+  background-color: yellow;
+  margin-left: auto; 
+}
+
   </style>
   <script>
     //This is all Javascript code
     document.addEventListener('DOMContentLoaded', function() {
-      // Get all tab links and tab content
-      var tabLinks = document.querySelectorAll('nav a');
-      var tabContents = document.querySelectorAll('.tab-content');
+  // Get all tab links and tab content
+  var tabLinks = document.querySelectorAll('nav a');
+  var tabContents = document.querySelectorAll('.tab-content');
 
-      // Add event listeners to the tab links
-      tabLinks.forEach(function(tabLink) {
-        tabLink.addEventListener('click', function(event) {
-          event.preventDefault();
+  // Add event listeners to the tab links
+  tabLinks.forEach(function(tabLink) {
+    tabLink.addEventListener('click', function(event) {
+      event.preventDefault();
 
-          // Remove active class from all tab links and tab contents
-          tabLinks.forEach(function(link) {
-            link.classList.remove('active');
-          });
-          tabContents.forEach(function(content) {
-            content.classList.remove('active');
-          });
-
-          // Add active class to the clicked tab link and corresponding tab content
-          var target = this.getAttribute('href');
-          this.classList.add('active');
-          document.querySelector(target).classList.add('active');
-        });
+      // Remove active class from all tab links and tab contents
+      tabLinks.forEach(function(link) {
+        link.classList.remove('active');
+      });
+      tabContents.forEach(function(content) {
+        content.classList.remove('active');
       });
 
-      // Restaurant search functionality
-      //TODO: Add actual restaurants and zip codes!
-      var restaurants = [
-        { name: "Restaurant 1", address: "16224", zipCode: "78701" },
-        { name: "Restaurant 2", address: "16225",zipCode: "78702" },
-        { name: "Restaurant 3", address: "16226",zipCode: "78703" },
-        { name: "Restaurant 4", address: "16227",zipCode: "78704" },
-        { name: "Restaurant 5", address: "16228", zipCode: "78705" },
-        { name: "Restaurant 6", address: "16229",zipCode: "78706" },
-        { name: "Restaurant 7", address: "16230",zipCode: "78707" },
-        { name: "Restaurant 8", address: "16231",zipCode: "78708" },
-        { name: "Restaurant 9", address: "16232",zipCode: "78709" },
-        { name: "Restaurant 10", address: "16233",zipCode: "78710" },
-        { name: "Restaurant 11", address: "16234",zipCode: "78710" }
-      ];
-
-      var searchForm = document.getElementById('searchForm');
-      var searchResults = document.getElementById('searchResults');
-
-      searchForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Clear previous search results
-        searchResults.innerHTML = '';
-
-        // Get the search query
-        var searchQuery = document.getElementById('searchQuery').value;
-
-        // Perform search
-        var matchingRestaurants = restaurants.filter(function(restaurant) {
-          return restaurant.zipCode === searchQuery;
-        });
-
-        // Display search results
-        if (matchingRestaurants.length > 0) {
-          matchingRestaurants.forEach(function(restaurant) {
-            var listItem = document.createElement('li');
-            listItem.textContent = restaurant.name;
-            searchResults.appendChild(listItem);
-          });
-        } else {
-          var listItem = document.createElement('li');
-          listItem.textContent = 'No restaurants found for the provided zip code.';
-          searchResults.appendChild(listItem);
-        }
-      });
+      // Add active class to the clicked tab link and corresponding tab content
+      var target = this.getAttribute('href');
+      this.classList.add('active');
+      document.querySelector(target).classList.add('active');
     });
+  });
+
+  // Restaurant search functionality
+  var restaurants = [
+    { name: "Restaurant 1", zipCode: "78701", address: ": 123 Main St" },
+    { name: "Restaurant 2", zipCode: "78702", address: ": 456 Elm St" },
+    { name: "Restaurant 3", zipCode: "78703", address: ": 789 Oak St" },
+    { name: "Restaurant 4", zipCode: "78704", address: ": 321 Pine St" },
+    { name: "Restaurant 5", zipCode: "78705", address: ": 987 Maple St" },
+    { name: "Restaurant 6", zipCode: "78706", address: ": 654 Birch St" },
+    { name: "Restaurant 7", zipCode: "78707", address: ": 246 Oak St" },
+    { name: "Restaurant 8", zipCode: "78708", address: ": 135 Elm St" },
+    { name: "Restaurant 9", zipCode: "78709", address: ": 975 Pine St" },
+    { name: "Restaurant 10", zipCode: "78710", address: ": 864 Maple St" },
+    { name: "Restaurant 11", zipCode: "78710", address: ": 865 Maple St" }
+
+  ];
+
+  var searchForm = document.getElementById('searchForm');
+  var searchResults = document.getElementById('searchResults');
+
+  searchForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Clear previous search results
+    searchResults.innerHTML = '';
+
+    // Get the search query
+    var searchQuery = document.getElementById('searchQuery').value;
+
+    // Perform search
+    var matchingRestaurants = restaurants.filter(function(restaurant) {
+      return restaurant.zipCode === searchQuery;
+    });
+
+    // Display search results
+    if (matchingRestaurants.length > 0) {
+    matchingRestaurants.forEach(function(restaurant) {
+      var listItem = document.createElement('li');
+      var restaurantName = document.createElement('span');
+      var restaurantAddress = document.createElement('span');
+      var requestButton = document.createElement('button');
+
+      restaurantName.textContent = restaurant.name;
+      restaurantAddress.textContent = restaurant.address;
+      requestButton.textContent = 'Request Food';
+      requestButton.className = 'request-button';
+
+      listItem.appendChild(restaurantName);
+      listItem.appendChild(restaurantAddress);
+      listItem.appendChild(requestButton);
+
+      searchResults.appendChild(listItem);
+    });
+    } else {
+      var listItem = document.createElement('li');
+      listItem.textContent = 'No restaurants found for the provided zip code.';
+      searchResults.appendChild(listItem);
+    }
+  });
+});
+
 
     //HTML code starts here
   </script>
