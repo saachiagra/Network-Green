@@ -3,126 +3,115 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #f9f9f9;
 }
 
 /* Header Styles */
 header {
-  background-color: #fff;
+  background-color: #047329;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
+  color: #ffffff;
   font-size: 36px;
-  color: #333;
   margin: 0;
-  padding: 20px 0;
 }
 
 /* Navigation Styles */
 nav {
-  text-align: center;
-  margin: 20px 0;
+  background-color: #f9f9f9;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
   list-style: none;
-  display: inline-block;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
-  display: inline-block;
   margin: 0 10px;
 }
 
 nav ul li a {
-  text-decoration: none;
   color: #555;
-  font-size: 18px;
-  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-  background-color: #555;
-  color: #fff;
+  background-color: #047329;
+  color: #ffffff;
 }
 
-nav ul li a.active {
-  background-color: #4CAF50;
-  color: #fff;
-}
-
-/* Form Styles */
-form {
-  max-width: 400px;
-  margin: 20px auto;
-  background-color: #fff;
+/* Main Content Styles */
+main {
   padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-label {
-  font-weight: bold;
+/* Tabs Styles */
+.tab-content {
+  display: none;
 }
 
-input[type="text"],
-textarea {
+.tab-content.active {
+  display: block;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Restaurant Search Styles */
+#searchForm {
+  margin-bottom: 20px;
+}
+
+#searchResults {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#searchResults li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  background-color: #f9f9f9;
   padding: 10px;
-  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  resize: vertical;
 }
 
-input[type="submit"] {
-  margin-top: 10px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
+.request-button {
+  background-color: #ffc107;
+  color: #000;
   border: none;
+  padding: 8px 20px;
   border-radius: 4px;
+  font-size: 14px;
   cursor: pointer;
-  font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
-}
-
-/* List Styles */
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 10px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Map Styles */
-#map {
-  height: 400px;
-  margin-top: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Additional Styles */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+.request-button:hover {
+  background-color: #ffa000;
 }
