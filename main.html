@@ -130,7 +130,7 @@
       <li><a href="#restaurants">Restaurants</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#donate">Donate</a></li>
-      <li><a href="#request">Request</a></li>
+      <li><a href="#login">Log In</a></li>
     </ul>
   </nav>
 
@@ -205,17 +205,20 @@
       <p>Routing number: 0987654321</p>
     </section>
 
-    <section id="request" class="tab-content">
-      <h2>Request Food</h2>
+    <section id="login" class="tab-content">
+      <!--<h2>Log In</h2>
       <p>If you are in need of food, you can request it from the available restaurants:</p>
-      <p>Enter the details below to make a request:</p>
+      <p>Enter the details below to make a request:</p> -->
       <form id="requestForm">
-        <input type="text" id="locationName" placeholder="Name of Location" required>
-        <input type="text" id="locationAddress" placeholder="Address" required>
-        <input type="text" id="yourName" placeholder="Your Name" required>
-        <input type="email" id="yourEmail" placeholder="Your Email" required>
-        <input type="number" id="foodAmount" placeholder="Amount of Food Needed" required>
-        <button type="submit">Submit Request</button>
+        <!--<label for="username">Username:</label>-->
+        <input type="text" name="username" placeholder="Username" id="username" minlength="4" max length="15" pattern="[a-zA-Z0-9]+" required>
+        <br>
+        <!--<label for="user-pwd">Password:</label>-->
+        <input type="password" id="user-pw" placeholder="Password" name="user-pw" minlength="6" max length="15" required>
+        <br>
+        <button type="submit" class="loginbtn">Login</button>
+        <br>
+        <p class="pwd" id="center">New to Network Green? <a href="register.html">Join Here</a></p>
       </form>
     </section>
   </main>

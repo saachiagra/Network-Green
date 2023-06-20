@@ -41,3 +41,18 @@ function handleSubmit(event) {
 // Add event listener to the form
 const donationForm = document.getElementById('donationForm');
 donationForm.addEventListener('submit', handleSubmit);
+
+//confirming passwords verification
+function validatePassword(){
+  var password = document.getElementById("password").value;
+  var confirm_password = document.getElementById("confirm_password").value;
+
+  if (password == confirm_password) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword();
+confirm_password.onkeyup = validatePassword();

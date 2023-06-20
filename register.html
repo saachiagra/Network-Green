@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <script src="script.js"></script>
+
+    <form id="registerForm">
+        <input type="text" name="restaurantName" placeholder="Restaurant Name" id="restaurantName" required>
+        <br>
+        <input type="text" name="username-r" placeholder="Username" id="username" minlength="4" max length="15" pattern="[a-zA-Z0-9]+" required>
+        <br>
+        <input type="password" id="password" placeholder="Password" name="password" minlength="6" max length="15" required>
+        <br>
+        <input type="password" id="confirm_password" placeholder="Confirm Password" name="confirm_password" minlength="6" max length="15" required>
+        <br>
+        <button type="submit" class="loginbtn" onclick="validatePassword()">Submit</button>
+        <br>
+        <p class="pwd" id="center"><a href="main.html">Go To Main Site</a></p>
+      </form>
+
+
+    
+</body>
+</html>

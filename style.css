@@ -115,3 +115,36 @@ footer {
 .request-button:hover {
   background-color: #ffa000;
 }
+
+.loginbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.loginbtn:hover {
+  opacity: 0.8;
+}
+
+input[type=text], input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  /*text-align: center;*/
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#center {
+  text-align: center;
+}
