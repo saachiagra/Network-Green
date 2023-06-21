@@ -11,16 +11,16 @@
 <body>
     <script src="script.js"></script>
 
-    <form id="registerForm">
+    <form id="registerForm" onsubmit="register(event)">
         <input type="text" name="restaurantName" placeholder="Restaurant Name" id="restaurantName" required>
         <br>
-        <input type="text" name="username-r" placeholder="Username" id="username" minlength="4" max length="15" pattern="[a-zA-Z0-9]+" required>
+        <input type="text" name="username-r" placeholder="Username" id="username-r" minlength="4" max length="15" pattern="[a-zA-Z0-9]+" required>
         <br>
         <input type="password" id="password" placeholder="Password" name="password" minlength="6" max length="15" required>
         <br>
-        <input type="password" id="confirm_password" placeholder="Confirm Password" name="confirm_password" minlength="6" max length="15" required>
+        <input type="password" id="confirm_password" placeholder="Confirm Password" name="confirm_password" minlength="6" max length="15" required oninput="checkPasswordMatch(this)">
         <br>
-        <button type="submit" class="loginbtn" onclick="validatePassword()">Submit</button>
+        <button type="submit" class="loginbtn">Submit</button>
         <br>
         <p class="pwd" id="center"><a href="main.html">Go To Main Site</a></p>
       </form>

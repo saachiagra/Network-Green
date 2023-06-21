@@ -42,17 +42,22 @@ function handleSubmit(event) {
 const donationForm = document.getElementById('donationForm');
 donationForm.addEventListener('submit', handleSubmit);
 
-//confirming passwords verification
-function validatePassword(){
-  var password = document.getElementById("password").value;
-  var confirm_password = document.getElementById("confirm_password").value;
 
-  if (password == confirm_password) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
+function register(event) {
+  event.preventDefault(); // Prevent form submission
+
+  var username = document.getElementById("username-r").value;
+  var password = document.getElementById("password").value;
+
 }
 
-password.onchange = validatePassword();
-confirm_password.onkeyup = validatePassword();
+//confirming passwords verification
+function checkPasswordMatch(confirmPasswordInput) {
+  var passwordInput = document.getElementById("password");
+
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    confirmPasswordInput.setCustomValidity("Passwords do not match");
+  } else {
+    confirmPasswordInput.setCustomValidity("");
+  }
+}
