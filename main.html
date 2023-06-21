@@ -7,6 +7,24 @@
   <link rel="stylesheet" href="style.css">
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Get user's location and update the map
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showMap, handleLocationError);
+      }
+
+      function showMap(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var mapFrame = document.getElementById('mapFrame');
+        var mapSrc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp2sWaBCBVR0P3katwTumON1JbB5Iw1aA&q=restaurants+' + latitude + ',' + longitude;
+        mapFrame.src = mapSrc;
+      }
+
+      function handleLocationError(error) {
+        // Handle errors if geolocation fails
+        console.error('Error getting user location:', error);
+      }
+
       // Get all tab links and tab content
       var tabLinks = document.querySelectorAll('nav a');
       var tabContents = document.querySelectorAll('.tab-content');
@@ -137,7 +155,8 @@
   <main>
     <section id="home" class="tab-content active">
       <div class="hero">
-        <h2 style="color: black;">Welcome to Network Green</h2>
+      <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: black;": black;">Welcome to Network Green</h2>
+
         <div style="display: flex; justify-content: space-between;">
           <img
             src="https://c4.wallpaperflare.com/wallpaper/878/756/892/austin-texas-twilight-skyscrapers-wallpaper-preview.jpg"
@@ -169,7 +188,6 @@
 
       </div>
     </section>
-
     <section id="about" class="tab-content active">
       <div class="container">
         <h2>About Network Green</h2>
@@ -179,24 +197,20 @@
 
 
     <section id="restaurants" class="tab-content">
-      <h2>Restaurants</h2>
-      <p>Enter a zip code to search for restaurants in that area:</p>
-      <form action="/restaurants" method="POST" id="searchForm">
-        <label for="zipcode">Enter ZIP code:</label>
-        <input type="text" id="searchQuery" required>
-        <button type="submit">Search</button>
-      </form>
-      <ul id="searchResults"></ul>
+  <h2>Restaurants</h2>
+  <p>Enter a zip code to search for restaurants in that area:</p>
+  <form action="/restaurants" method="POST" id="searchForm">
+    <label for="zipcode">Enter ZIP code:</label>
+    <input type="text" id="searchQuery" required>
+    <button type="submit">Search</button>
+  </form>
+  <ul id="searchResults"></ul>
 
-      <iframe
-    width="100%"
-    height="480"
-    frameborder="1"
-    style="border:2"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDp2sWaBCBVR0P3katwTumON1JbB5Iw1aA&q=restaurants+78717"
-    allowfullscreen>
-  </iframe>
-    </section>
+  <div id="mapContainer">
+    <iframe id="mapFrame" width="100%" height="480" frameborder="1" style="border:2" allowfullscreen></iframe>
+  </div>
+</section>
+
     
     <section id="contact" class="tab-content">
     <h2>Contact Us</h2>
