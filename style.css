@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f9f9f9;
+  animation: fadeIn 0.5s ease-in;
 }
 
 /* Header Styles */
@@ -13,6 +14,7 @@ header {
   padding: 20px;
   text-align: center;
   border-radius: 4px;
+  animation: slideDown 0.5s ease-in-out;
 }
 
 header img {
@@ -26,8 +28,9 @@ header img {
   border: 2px solid #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   background-color: #047329;
-}
+  animation: rotate 2s linear 1 forwards;
 
+}
 
 h1 {
   color: #ffffff;
@@ -41,6 +44,7 @@ nav {
   background-color: #036d26;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in;
 }
 
 nav ul {
@@ -73,11 +77,13 @@ nav ul li a:hover {
 /* Main Content Styles */
 main {
   padding: 20px;
+  animation: slideUp 0.5s ease-in-out;
 }
 
 /* Tabs Styles */
 .tab-content {
   display: none;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .tab-content.active {
@@ -91,11 +97,13 @@ footer {
   text-align: center;
   color: #555;
   font-size: 16px;
+  animation: slideUp 0.5s ease-in-out;
 }
 
 /* Restaurant Search Styles */
 #searchForm {
   margin-bottom: 20px;
+  animation: slideUp 0.5s ease-in-out;
 }
 
 #searchResults {
@@ -105,6 +113,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
+  animation: fadeIn 0.5s ease-in;
 }
 
 #searchResults li {
@@ -114,6 +123,7 @@ footer {
   border-radius: 4px;
   display: flex;
   flex-direction: column;
+  animation: slideIn 0.5s ease-in-out;
 }
 
 #searchResults li:hover {
@@ -135,6 +145,7 @@ footer {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  animation: bounceIn 0.5s ease-in-out;
 }
 
 .rating-stars {
@@ -157,6 +168,7 @@ footer {
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.5s ease-in-out;
 }
 
 .loginbtn {
@@ -170,6 +182,7 @@ footer {
   width: 70%;
   margin-left: 15%;
   margin-right: 15%;
+  animation: scaleIn 0.5s ease-in-out;
 }
 
 .loginbtn:hover {
@@ -186,6 +199,7 @@ input[type=text], input[type=password] {
   width: 70%;
   margin-left: 15%;
   margin-right: 15%;
+  animation: scaleIn 0.5s ease-in-out;
 }
 
 #center {
@@ -212,6 +226,75 @@ nav ul li a:hover:after {
   visibility: visible;
   transform: scaleX(1);
 }
-html {
-  scroll-behavior: smooth;
+
+/* Keyframe Animations */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
