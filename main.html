@@ -19,6 +19,12 @@
         var mapSrc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp2sWaBCBVR0P3katwTumON1JbB5Iw1aA&q=restaurants+' + latitude + ',' + longitude;
         mapFrame.src = mapSrc;
       }
+      
+      function showMap(searchQuery) {
+  var mapFrame = document.getElementById('mapFrame');
+  var mapSrc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp2sWaBCBVR0P3katwTumON1JbB5Iw1aA&q=restaurants+' + searchQuery;
+  mapFrame.src = mapSrc;
+}
 
       function handleLocationError(error) {
         // Handle errors if geolocation fails
@@ -68,13 +74,17 @@
       var searchResults = document.getElementById('searchResults');
 
       searchForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+  event.preventDefault();
 
-        // Clear previous search results
-        searchResults.innerHTML = '';
+  // Clear previous search results
+  searchResults.innerHTML = '';
 
-        // Get the search query
-        var searchQuery = document.getElementById('searchQuery').value;
+  // Get the search query
+  var searchQuery = document.getElementById('searchQuery').value;
+
+  // Call the showMap function with the search query
+  showMap(searchQuery);
+
 
         // Perform search
         var matchingRestaurants = restaurants.filter(function (restaurant) {
@@ -207,10 +217,12 @@
   <ul id="searchResults"></ul>
 
   <div id="mapContainer">
+    
     <iframe id="mapFrame" width="100%" height="480" frameborder="1" style="border:2" allowfullscreen></iframe>
   </div>
+      
 </section>
-
+  
     
     <section id="contact" class="tab-content">
     <h2>Contact Us</h2>
