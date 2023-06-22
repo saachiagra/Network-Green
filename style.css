@@ -1,40 +1,217 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  
-  h1, h2 {
-    text-align: center;
-  }
-  
-  form {
-    max-width: 400px;
-    margin: 20px auto;
-  }
-  
-  label, input, textarea {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  input[type="submit"] {
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    padding: 10px;
-  }
-  
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Header Styles */
+header {
+  font-family: 'Times New Roman', Times, serif;
+  background: linear-gradient(to right, #047329, #03a74a);
+  padding: 20px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+header img {
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  top: 100px;
+  right: 10px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: #047329;
+}
+
+
+h1 {
+  color: #ffffff;
+  font-size: 48px;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Styles */
+nav {
+  background-color: #036d26;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  position: relative;
+}
+
+nav ul li a:hover {
+  background-color: #049a37;
+}
+
+/* Main Content Styles */
+main {
+  padding: 20px;
+}
+
+/* Tabs Styles */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+}
+
+/* Restaurant Search Styles */
+#searchForm {
+  margin-bottom: 20px;
+}
+
+#searchResults {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+#searchResults li {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+#searchResults li:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.restaurant-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.restaurant-info {
+  margin-bottom: 10px;
+}
+
+.restaurant-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating-stars {
+  color: #ffc107;
+  margin-right: 5px;
+}
+
+.restaurant-description {
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+.request-button {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.loginbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.loginbtn:hover {
+  opacity: 0.8;
+}
+
+input[type=text], input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  /*text-align: center;*/
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#center {
+  text-align: center;
+}
+
+/* Additional Enhancements */
+
+/* Navigation Link Animation */
+nav ul li a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #049a37;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover:after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+html {
+  scroll-behavior: smooth;
+}
