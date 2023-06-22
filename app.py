@@ -21,7 +21,7 @@ def restaurants():
 
     restaurants = gmaps.places_nearby(location=location, radius=500, type='restaurant')
 
-    return render_template("restaurants.html", restaurants=restaurants['results'])
+    return render_template("restaurants.html", restaurants=restaurants['results'], location=location)
 
 if __name__ == "__main__":
     app.run(debug=True)
