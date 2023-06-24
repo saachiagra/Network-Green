@@ -15,7 +15,9 @@ header {
   text-align: center;
   border-radius: 4px;
   animation: slideDown 0.5s ease-in-out;
+  animation-delay: 0.1s; /* Delay animation for smoother effect */
 }
+
 
 header img {
   height: 120px;
@@ -28,8 +30,7 @@ header img {
   border: 2px solid #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   background-color: #047329;
-  animation: rotate 2s linear 1 forwards;
-
+  animation: rotate 1.5s linear 1 forwards;
 }
 
 h1 {
@@ -37,6 +38,8 @@ h1 {
   font-size: 48px;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in;
+  animation-delay: 0.2s; /* Delay animation for smoother effect */
 }
 
 /* Navigation Styles */
@@ -45,6 +48,7 @@ nav {
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in;
+  
 }
 
 nav ul {
@@ -189,7 +193,8 @@ footer {
   opacity: 0.8;
 }
 
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   /*text-align: center;*/
@@ -298,3 +303,62 @@ nav ul li a:hover:after {
     transform: scale(1);
   }
 }
+
+/* CSS Styling for Request Food Functionality */
+.request-button {
+  background-color: #4CAF50; /* Green background */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.request-button:hover {
+  background-color: #45a049; /* Darker green background on hover */
+}
+
+.request-details {
+  margin-top: 20px;
+}
+
+.request-details label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.request-details input[type="text"],
+.request-details input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.request-details input[type="submit"] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.request-details input[type="submit"]:hover {
+  background-color: #45a049; /* Darker green background on hover */
+}
+
