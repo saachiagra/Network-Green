@@ -5,7 +5,9 @@
 <head>
   <title>Network Green</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
   <script>
+    var foodRequests = [];
     document.addEventListener('DOMContentLoaded', function () {
       // Get user's location and update the map
       if (navigator.geolocation) {
@@ -25,6 +27,24 @@
   var mapSrc = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp2sWaBCBVR0P3katwTumON1JbB5Iw1aA&q=restaurants+' + searchQuery;
   mapFrame.src = mapSrc;
 }
+      function displayFoodRequests() {
+  var requestsList = document.getElementById('requestsList');
+  requestsList.innerHTML = '';
+
+  foodRequests.forEach(function (request) {
+    var listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <strong>${request.requesterName}</strong> (${request.requesterEmail})<br>
+      Requesting food from <strong>${request.restaurantName}</strong> (${request.restaurantAddress})<br>
+      Location: ${request.locationName} (${request.locationAddress})<br>
+      Amount of food needed: ${request.foodAmount}<br>
+      <em>${request.timestamp}</em>
+    `;
+    requestsList.appendChild(listItem);
+  });
+}
+
+      
 
       function handleLocationError(error) {
         // Handle errors if geolocation fails
@@ -144,6 +164,23 @@
             '\nYour Name: ' + yourName +
             '\nYour Email: ' + yourEmail +
             '\nAmount of Food Needed: ' + amountOfFoodNeeded);
+          // Create a new food request object
+var foodRequest = {
+  restaurantName: restaurantName,
+  restaurantAddress: restaurantAddress,
+  locationName: nameOfLocation,
+  locationAddress: addressOfLocation,
+  requesterName: yourName,
+  requesterEmail: yourEmail,
+  foodAmount: amountOfFoodNeeded,
+  timestamp: new Date().toLocaleString() // Add timestamp
+};
+
+// Add the food request to the foodRequests array
+foodRequests.push(foodRequest);
+displayFoodRequests();
+
+
         }
       });
     });
@@ -226,8 +263,13 @@
     
     <iframe id="mapFrame" width="100%" height="480" frameborder="1" style="border:2" allowfullscreen></iframe>
   </div>
+
       
+    <h3>Food Requests</h3>
+<ul id="requestsList"></ul>
+
 </section>
+
   
     
     <section id="contact" class="tab-content">
@@ -267,6 +309,7 @@
         <p class="pwd" id="center">New to Network Green? <a href="register.html">Join Here</a></p>
       </form>
     </section>
+
   </main>
 
   <footer>
