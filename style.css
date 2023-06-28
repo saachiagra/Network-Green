@@ -18,7 +18,6 @@ header {
   animation-delay: 0.1s; /* Delay animation for smoother effect */
 }
 
-
 header img {
   height: 120px;
   width: 120px;
@@ -363,42 +362,44 @@ nav ul li a:hover:after {
 }
 
 /* Food Requests Section Styles */
-#Requests {
-  margin-top: 20px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.5s ease-in-out;
-}
-
-h2 {
+h3 {
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;
 }
 
 ul#requestsList {
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.5s ease-in-out;
   list-style: none;
-  padding: 0;
   margin: 0;
 }
 
 .request-item {
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #ebebeb;
 }
 
 .request-item:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .food-name {
   font-weight: bold;
   margin-right: 10px;
   flex-basis: 30%;
+  color: #555;
 }
 
 .request-details {
@@ -415,7 +416,26 @@ ul#requestsList {
   font-size: 12px;
 }
 
-/* Additional Enhancements */
+.request-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.request-item:hover .food-name {
+  color: #4CAF50;
+  transition: color 0.3s ease;
+}
+
+.request-item:hover .request-status {
+  color: #888888;
+  transition: color 0.3s ease;
+}
+
+.request-item:hover .request-date {
+  color: #4CAF50;
+  transition: color 0.3s ease;
+}
 
 .request-details p {
   margin: 5px 0;
@@ -423,23 +443,5 @@ ul#requestsList {
 
 .request-details span {
   font-weight: bold;
-}
-
-.request-item:hover {
-  background-color: #f5f5f5;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.request-item:hover .food-name {
-  color: #4CAF50;
-}
-
-.request-item:hover .request-status {
-  color: #888888;
-}
-
-.request-item:hover .request-date {
-  color: #4CAF50;
 }
 
