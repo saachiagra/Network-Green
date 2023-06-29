@@ -46,7 +46,7 @@ donationForm.addEventListener('submit', handleSubmit);
 function register(event) {
   event.preventDefault(); // Prevent form submission
 
-  var username = document.getElementById("username-r").value;
+  var username = document.getElementById("usernamereg").value;
   var password = document.getElementById("password").value;
 
 }
@@ -61,3 +61,4 @@ function checkPasswordMatch(confirmPasswordInput) {
     confirmPasswordInput.setCustomValidity("");
   }
 }
+
