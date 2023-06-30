@@ -1,11 +1,23 @@
 /* General Styles */
+html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
   background-color: #f9f9f9;
   animation: fadeIn 0.5s ease-in;
 }
+
+#searchForm {
+    width: 1000px; /* Set the desired width */
+    margin: 3; /* Center the form horizontally */
+  }
 
 /* Header Styles */
 header {
@@ -223,7 +235,7 @@ nav ul li a:after {
   background-color: #049a37;
   visibility: hidden;
   transform: scaleX(0);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 nav ul li a:hover:after {
@@ -265,11 +277,16 @@ nav ul li a:hover:after {
     transform: translateY(100%);
     opacity: 0;
   }
-  100% {
+  50% {
     transform: translateY(0);
     opacity: 1;
   }
+  100% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
 }
+
 
 @keyframes slideIn {
   0% {
@@ -286,13 +303,20 @@ nav ul li a:hover:after {
   0% {
     transform: scale(0);
   }
+  25% {
+    transform: scale(1.2);
+  }
   50% {
+    transform: scale(0.9);
+  }
+  75% {
     transform: scale(1.1);
   }
   100% {
     transform: scale(1);
   }
 }
+
 
 @keyframes scaleIn {
   0% {
