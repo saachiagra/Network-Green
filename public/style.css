@@ -204,8 +204,7 @@ footer {
   opacity: 0.8;
 }
 
-input[type=text],
-input[type=password] {
+ input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   /*text-align: center;*/
@@ -218,7 +217,48 @@ input[type=password] {
   animation: scaleIn 0.5s ease-in-out;
 }
 
-#center {
+input[type=text][name=username] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  
+  animation: scaleIn 0.5s ease-in-out;
+}
+
+input[type=text][name=restaurantName] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  
+  animation: scaleIn 0.5s ease-in-out;
+}
+
+input[type=text][name=usernamereg] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  
+  animation: scaleIn 0.5s ease-in-out;
+}
+
+
+
+.center {
   text-align: center;
 }
 
@@ -554,4 +594,17 @@ span.price {
   .col-25 {
     margin-bottom: 20px;
   }
+}
+
+.dashboard {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+.welcome {
+  font-size:70px;
+}
+
+.intro {
+  font-size:40px;
 }

@@ -2,35 +2,28 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const bodyParser = require('body-parser');
-
-const db = mysql.createPool({
-   connectionLimit : 1000,
-   connectTimeout  : 60 * 60 * 1000,
-   acquireTimeout  : 60 * 60 * 1000,
-   timeout         : 60 * 60 * 1000,
-   host: "127.0.0.1",       //This is your localhost IP
-   user: "user1",         // "newuser" created in Step 1(e)
-   password: "password1@",  // password for the new user
-   database: "userdb",      // Database name
-   port: "9999"             // port name, "3306" by default
-})
+var path = require('path');
 
 require("dotenv").config();
-
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_DATABASE = process.env.DB_DATABASE;
 const DB_PORT = process.env.DB_PORT;
 
-/*const db = mysql.createPool({
-   connectionLimit: 100,
+const db = mysql.createPool({
+   connectionLimit : 1000,
+   connectTimeout  : 60 * 60 * 1000,
+   acquireTimeout  : 60 * 60 * 1000,
+   timeout         : 60 * 60 * 1000,
+
    host: DB_HOST,
    user: DB_USER,
    password: DB_PASSWORD,
    database: DB_DATABASE,
    port: DB_PORT
-}) */
+})
+
 
 db.getConnection(function(err, connection) {
    if (err) throw (err)
@@ -50,12 +43,21 @@ const bcrypt = require("bcrypt");
 app.use(express.json());
 //middleware to read req.body.<params>
 
-app.get("/", (req, res) => {
+app.set('view engine', 'ejs');
+
+/*app.get("/", (req, res) => {
    res.sendFile(__dirname + "/register.html");
+}); */
+
+app.get("/", (req, res) => {
+   res.render('pages/dashboard');
 });
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static("public"));
+
 
 //CREATE USER
 app.post("/createUser", async (req,res) => {
@@ -96,7 +98,12 @@ app.post("/createUser", async (req,res) => {
             if (err) throw (err)
             console.log ("--------> Created new User")
             console.log(result.insertId)
-            res.sendStatus(201)
+            //res.sendStatus(201)
+            var data = {
+               restName: restName,
+               exists: true,
+            }
+            res.render('pages/dashboard', {data: data});
             });
          }
       }); //end of connection.query()
@@ -123,7 +130,13 @@ app.post("/login", (req, res)=> {
             //get the hashedPassword from result
             if (await bcrypt.compare(password, hashedPassword)) {
                console.log("---------> Login Successful");
-               res.send(`${user} is logged in!`);
+               //res.send(`${user} is logged in!`);
+               var data = {
+                  restName: result[0].restaurantname,
+                  exists: true,
+               }
+               console.log(data);
+               res.render('pages/dashboard', {data: data});
             } 
             else {
                console.log("---------> Password Incorrect");

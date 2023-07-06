@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Network Green</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="map.html" rel="import">
+  <link href="register.html" rel="import">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Network Green</h1>
+    <img src="image-removebg-preview (6).png" height="120" width="120" style="float:right;margin:-50px 25px">
+
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#restaurants">Restaurants</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#login">Log In</a></li>
+      <li><a href="#demo">Demo</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home" class="tab-content active">
+      <div class="hero">
+      <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: black;": black;">Welcome to Network Green</h2>
+
+        <div style="display: flex; justify-content: space-between;">
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/878/756/892/austin-texas-twilight-skyscrapers-wallpaper-preview.jpg"
+            height="500" width="700">
+          <div style="width: 20px;"></div> <!-- This div creates the space between the images -->
+          <img
+            src="https://res.cloudinary.com/simpleview/image/upload/v1648755098/clients/austin/Austin_Skyline_Credit_Christopher_Sherman_lifetime__4f60343d-9f69-450c-8ad3-fa636761786d.jpg"
+            height="500" width="700">
+        </div>
+
+
+      </div>
+      <div class="container">
+        <h3 style="color: black;">How It Works</h3>
+        <p style="color: black;">Our platform connects restaurants that have surplus food with food pantries and
+          homeless shelters in need. We provide a seamless way for restaurants to donate their excess food, ensuring
+          that it reaches those who need it the most.</p>
+        <h3 style="color: black;">Why Donate</h3>
+        <p style="color: black;">By donating food, restaurants not only contribute to reducing food waste but also make
+          a positive impact on the lives of individuals facing food insecurity. Join us in making Austin a more
+          sustainable and compassionate community.</p>
+        <h3 style="color: black;">Get Involved</h3>
+        <p style="color: black;">Whether you're a restaurant owner, a food pantry representative, or an individual
+          passionate about our cause, there are many ways to get involved. Contact us to learn more about volunteer
+          opportunities, partnerships, and donations.</p>
+
+
+
+
+      </div>
+    </section>
+    <section id="about" class="tab-content active">
+      <div class="container">
+        <h2>About Network Green</h2>
+        <p>Network Green is a platform dedicated to promoting sustainable practices and connecting restaurants with food donation programs. We strive to reduce food wastage in Austin, help the community, and support local businesses.</p>
+      </div>
+    </section>
+
+
+    <section id="restaurants" class="tab-content">
+  <h2>Restaurants</h2>
+  <p>Enter a zip code to search for restaurants in that area:</p>
+  <form action="/restaurants" method="POST" id="searchForm">
+    <label for="zipcode">Enter ZIP code:</label>
+    <input type="text" id="searchQuery" required>
+    <button type="submit">Search</button>
+  </form>
+  <ul id="searchResults"></ul>
+
+  <div id="mapContainer">
+    
+    <iframe id="mapFrame" width="100%" height="480" frameborder="1" style="border:2" allowfullscreen></iframe>
+  </div>
+
+      
+    <h3>Food Requests</h3>
+<ul id="requestsList"></ul>
+
+</section>
+
+  
+    
+    <section id="contact" class="tab-content">
+    <h2>Contact Us</h2>
+    <p>For any inquiries or feedback, please contact us at:</p>
+    <p>Email: contact@networkgreen.com</p>
+    <p>Phone: 123-456-7890</p>
+    <br>
+    <p>Contact info for each of the creators of this website:</p>
+    <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969</p>
+    <p>Parth Sanagani: psangani06@gmail.com (408) 667-7794</p>
+    <p>Saachi Agrawal: saachiagra@gmail.com (512) 718-7472</p>
+    <p>Devin: devineth@hotmail.com (512) 695-4996</p>
+    </section>
+
+    <section id="donate" class="tab-content">
+      <h2>Donate</h2>
+      <p>Support our mission by making a donation:</p>
+
+      <div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <p>Visa, Mastercard, American Express</p>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+        </label>
+        <input type="submit" value="Donate" class="btn">
+      </form>
+    </div>
+  </div>
+
+  <div class="col-25">
+    <div class="container">
+      <p>Total <span class="price" style="color:black"><b>$0</b></span></p>
+    </div>
+  </div>
+</div>
+    </section>
+
+    <section id="login" class="tab-content">
+      <!--<h2>Log In</h2>
+      <p>If you are in need of food, you can request it from the available restaurants:</p>
+      <p>Enter the details below to make a request:</p> -->
+      <form action="http://localhost:3000/login" method="POST" id="loginForm">
+        <!--<label for="username">Username:</label>-->
+        <input type="text" name="username" placeholder="Username" id="username" minlength="4" max length="15" pattern="[a-zA-Z0-9]+">
+        <br>
+        <!--<label for="user-pwd">Password:</label>-->
+        <input type="password" id="getPassword" placeholder="Password" name="getPassword" minlength="6" max length="15" required >
+        <br>
+        <button type="submit" class="loginbtn">Login</button>
+        <br>
+      </form>
+      <p class="pwd center">New to Network Green? <a href="register.html">Join Here</a></p>
+    </section>
+
+    <section id="demo" class="tab-content">
+      <p class="dashbord welcome center">Hello Roaring Fork!</p>
+      <p class="welcome center intro">These are your current requests:</p>
+      <div class="container">
+        <ul id="getRequests"></ul>
+      </div>
+
+      <!--<form id="demoLogin" name="demoLogin" method="POST" action="dashboard.html">
+        <input type="text" name="username" placeholder="Username" id="demoUser" minlength="4" max length="15" pattern="[a-zA-Z0-9]+">
+        <br>
+        <input type="password" id="demoPass" placeholder="Password" name="demoPass" minlength="6" max length="15" required >
+        <br>
+        <button type="submit" class="loginbtn">Login</button>
+        <br>
+      </form>-->
+      
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2023 Network Green. All rights reserved.
+  </footer>
+</body>
+
+</html>
+
+
