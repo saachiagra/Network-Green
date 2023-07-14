@@ -315,12 +315,60 @@
     </section>
 
   </main>
-
-  <footer>
-    &copy; 2023 Network Green. All rights reserved.
-  </footer>
-</body>
-
-</html>
-
-
+  +<footer>  
+    <html>
+    <head>
+      <style>
+        .footer {
+          background-color: white;
+          padding-bottom: 5px;
+          padding-top: 0px;
+          text-align: center;
+          border: 1px solid black;
+          color: black;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto auto;
+          gap: 10px;
+          align-items: center;
+          justify-items: center;
+          margin-top: 0;
+        }
+    
+        .footer .contact-info {
+          grid-column: 2 / 3;
+          
+        }
+    
+        .footer .made-by {
+          grid-column: 1 / 2;
+          
+          text-align: left, center;
+          
+        }
+    
+        .footer .rights {
+          grid-column: 1 / -1;
+          justify-self: center;
+        }
+      </style>
+    </head>
+    <body>
+      <footer class="footer">
+        <div class="made-by">
+          <h4>Website Creators</h4>
+          <p>Zaeem Alam, Parth Sangani, Saachi Agrawal, and Devin Thenuwara</p>
+          <p>Mentored by: Wei San Hui</p>
+        </div>
+        <div class="contact-info">
+          <h4>Contact Information</h4>
+          <p>Email: contact@networkgreen.com</p>
+          <p>Phone: +1 123-456-7890</p>
+          <p>Address: 123 Example Street, City, Country</p>
+        </div>
+        <div class="rights">
+          &copy; 2023 Network Green. All rights reserved.
+        </div>
+      </footer>
+    </body>
+    </html>
