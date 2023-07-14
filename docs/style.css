@@ -262,20 +262,33 @@ input[type=text][name=restaurantName] {
   
   animation: scaleIn 0.5s ease-in-out;
 }
+#about {
+  background-image: url("vintage-old-rustic-cutlery-dark.jpg");
+  background-size: contain;
+
+}
 
 .flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   max-width: 1000px;
   margin: 0 auto;
   padding: 50px;
   background-size: cover;
   background-position: center;
-  background-color: #f2f2f2;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.about-heading {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
 .about-content {
-  color: black;
+  color: white;
   font-size: 18px;
   line-height: 1.6;
 }
