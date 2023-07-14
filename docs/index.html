@@ -8,6 +8,9 @@
   <link href="map.html" rel="import">
   <link href="register.html" rel="import">
   <script src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Spectral&family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -32,7 +35,7 @@
   <main>
     <section id="home" class="tab-content active">
       <div class="hero">
-      <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: black;": black;">Welcome to Network Green</h2>
+      <h2>Welcome to Network Green!</h2>
 
       <div style="display: flex; justify-content: space-between;">
   <img src="https://c4.wallpaperflare.com/wallpaper/878/756/892/austin-texas-twilight-skyscrapers-wallpaper-preview.jpg" style="width: 49%; height: auto;">
@@ -55,38 +58,36 @@
         <p style="color: black;">Whether you're a restaurant owner, a food pantry representative, or an individual
           passionate about our cause, there are many ways to get involved. Contact us to learn more about volunteer
           opportunities, partnerships, and donations.</p>
-
-
-
-
       </div>
     </section>
-    <section id="about" class="tab-content active">
-      <div class="container">
-        <h2>About Network Green</h2>
-        <p>Network Green is a platform dedicated to promoting sustainable practices and connecting restaurants with food donation programs. We strive to reduce food wastage in Austin, help the community, and support local businesses.</p>
+    <section id="about" class="tab-content">
+      <h2 style="text-align:center" class="about-heading">About Us</h2>
+      <div class="flex-container">
+        <p class="about-content" style="font-size:50px; text-align:center">Our mission is to build a network that connects the world through charity and support.</p>
+        <p class="about-content">Through my work, I aim to raise awareness, inspire action, and drive change. I believe in the power of collective effort and collaboration, as we can achieve greater outcomes when we work together towards a common goal.</p>
+        <p class="about-content">Let's join hands and make a difference in the world. Together, we can create a better future for generations to come.</p>
       </div>
     </section>
 
 
     <section id="restaurants" class="tab-content">
   <h2>Restaurants</h2>
-  <p>Enter a zip code to search for restaurants in that area:</p>
-  <form action="/restaurants" method="POST" id="searchForm">
-    <label for="zipcode">Enter ZIP code:</label>
-    <input type="text" id="searchQuery" required>
-    <button type="submit">Search</button>
-  </form>
-  <ul id="searchResults"></ul>
+  <div class="container">
+    <p>Enter a zip code to search for restaurants in that area:</p>
+    <form action="/restaurants" method="POST" id="searchForm">
+      <label for="zipcode">Enter ZIP code:</label>
+      <input type="text" id="searchQuery" required>
+      <button type="submit">Search</button>
+    </form>
+    <ul id="searchResults"></ul>
 
-  <div id="mapContainer">
-    
-    <iframe id="mapFrame" width="100%" height="480" frameborder="1" style="border:2" allowfullscreen></iframe>
-  </div>
-
+    <div id="mapContainer">
       
+      <iframe id="mapFrame" width="100%" height="480" frameborder="1" style="border:2" allowfullscreen></iframe>
+    </div>
     <h3>Food Requests</h3>
-<ul id="requestsList"></ul>
+      <ul id="requestsList"></ul>
+  </div>
 
 </section>
 
@@ -94,15 +95,17 @@
     
     <section id="contact" class="tab-content">
     <h2>Contact Us</h2>
-    <p>For any inquiries or feedback, please contact us at:</p>
-    <p>Email: contact@networkgreen.com</p>
-    <p>Phone: 123-456-7890</p>
-    <br>
-    <p>Contact info for each of the website creators:</p>
-    <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969</p>
-    <p>Parth Sanagani: psangani06@gmail.com (408) 667-7794</p>
-    <p>Saachi Agrawal: saachiagra@gmail.com (512) 718-7472</p>
-    <p>Devin: devineth@hotmail.com (512) 695-4996</p>
+    <div class="container">
+      <p>For any inquiries or feedback, please contact us at:</p>
+      <p>Email: contact@networkgreen.com</p>
+      <p>Phone: 123-456-7890</p>
+      <br>
+      <p>Contact info for each of the website creators:</p>
+      <p>Zaeem Alam: zaeemalam@gmail.com 737-781-3969</p>
+      <p>Parth Sanagani: psangani06@gmail.com (408) 667-7794</p>
+      <p>Saachi Agrawal: saachiagra@gmail.com (512) 718-7472</p>
+      <p>Devin: devineth@hotmail.com (512) 695-4996</p>
+    </div>
 
     <style>
       .hidden {
@@ -273,37 +276,41 @@
 </script>
 
     <section id="login" class="tab-content">
-      <!--<h2>Log In</h2>
-      <p>If you are in need of food, you can request it from the available restaurants:</p>
-      <p>Enter the details below to make a request:</p> -->
-      <form action="http://localhost:3000/login" method="POST" id="loginForm">
-        <!--<label for="username">Username:</label>-->
-        <input type="text" name="username" placeholder="Username" id="username" minlength="4" max length="15" pattern="[a-zA-Z0-9]+">
-        <br>
-        <!--<label for="user-pwd">Password:</label>-->
-        <input type="password" id="getPassword" placeholder="Password" name="getPassword" minlength="6" max length="15" required >
-        <br>
-        <button type="submit" class="loginbtn">Login</button>
-        <br>
-      </form>
-      <p class="pwd center">New to Network Green? <a href="register.html">Join Here</a></p>
+      <div class="container">
+        <!--<h2>Log In</h2>
+        <p>If you are in need of food, you can request it from the available restaurants:</p>
+        <p>Enter the details below to make a request:</p> -->
+        <form action="http://localhost:3000/login" method="POST" id="loginForm">
+          <!--<label for="username">Username:</label>-->
+          <input type="text" name="username" placeholder="Username" id="username" minlength="4" max length="15" pattern="[a-zA-Z0-9]+">
+          <br>
+          <!--<label for="user-pwd">Password:</label>-->
+          <input type="password" id="getPassword" placeholder="Password" name="getPassword" minlength="6" max length="15" required >
+          <br>
+          <button type="submit" class="loginbtn">Login</button>
+          <br>
+        </form>
+        <p class="pwd center">New to Network Green? <a href="register.html">Join Here</a></p>
+      </div>
     </section>
 
     <section id="demo" class="tab-content">
-      <p class="dashbord welcome center">Hello Roaring Fork!</p>
-      <p class="welcome center intro">These are your current requests:</p>
-      <div class="container">
-        <ul id="getRequests"></ul>
-      </div>
+      <h2 class="welcome center">Hello Roaring Fork!</h2>
+        <div class="container">
+          <p class="welcome center intro">These are your current requests:</p>
+          <div class="container2">
+            <ul id="getRequests"></ul>
+          </div>
 
-      <!--<form id="demoLogin" name="demoLogin" method="POST" action="dashboard.html">
-        <input type="text" name="username" placeholder="Username" id="demoUser" minlength="4" max length="15" pattern="[a-zA-Z0-9]+">
-        <br>
-        <input type="password" id="demoPass" placeholder="Password" name="demoPass" minlength="6" max length="15" required >
-        <br>
-        <button type="submit" class="loginbtn">Login</button>
-        <br>
-      </form>-->
+          <!--<form id="demoLogin" name="demoLogin" method="POST" action="dashboard.html">
+            <input type="text" name="username" placeholder="Username" id="demoUser" minlength="4" max length="15" pattern="[a-zA-Z0-9]+">
+            <br>
+            <input type="password" id="demoPass" placeholder="Password" name="demoPass" minlength="6" max length="15" required >
+            <br>
+            <button type="submit" class="loginbtn">Login</button>
+            <br>
+          </form>-->
+        </div>
       
     </section>
 
