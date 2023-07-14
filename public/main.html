@@ -105,11 +105,10 @@
     <p>Devin: devineth@hotmail.com (512) 695-4996</p>
     </section>
 
-    <section id="donate" class="tab-content">
-      <h2>Donate</h2>
-      <p>Support our mission by making a donation:</p>
-
-      <div class="row">
+   <section id="donate" class="tab-content">
+  <h2>Donate</h2>
+  <p>Support our mission by making a donation:</p>
+ <div class="row">
   <div class="col-75">
     <div class="container">
       <form action="/action_page.php">
@@ -168,6 +167,29 @@
           </div>
         </div>
         <label>
+    </div>
+  </div>
+</div>
+   
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+
+        <!-- Existing code for billing address -->
+
+        <div class="col-50">
+          <h3>Donation Amount</h3>
+          <label for="donation">Choose an amount:</label>
+          <input type="range" id="donation" name="donation" min="0" max="1000" step="1" value="0" oninput="updateNumberBox()">
+          <p>Or enter an exact amount:</p>
+          <input type="number" id="customDonation" name="customDonation" min="0" step="1" value="0" oninput="updateSlider()">
+          <p>Donation: $<span id="donationValue">0</span></p>
+        </div>
+
+        <!-- Existing code for payment -->
+
+        <label>
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
         <input type="submit" value="Donate" class="btn">
@@ -177,11 +199,37 @@
 
   <div class="col-25">
     <div class="container">
-      <p>Total <span class="price" style="color:black"><b>$0</b></span></p>
+      <p>Total <span class="price" style="color:black"><b>$<span id="totalValue">0</span></b></span></p>
     </div>
   </div>
 </div>
-    </section>
+</section>
+
+<script>
+  // Update the number box value based on the slider input
+  function updateNumberBox() {
+    var slider = document.getElementById("donation");
+    var numberBox = document.getElementById("customDonation");
+    numberBox.value = slider.value;
+    updateDonation();
+  }
+
+  // Update the slider value based on the number box input
+  function updateSlider() {
+    var slider = document.getElementById("donation");
+    var numberBox = document.getElementById("customDonation");
+    slider.value = numberBox.value;
+    updateDonation();
+  }
+
+  // Update donation amount and total value
+  function updateDonation() {
+    var donationValue = document.getElementById("donationValue");
+    var totalValue = document.getElementById("totalValue");
+    donationValue.innerHTML = customDonation.value;
+    totalValue.innerHTML = customDonation.value;
+  }
+</script>
 
     <section id="login" class="tab-content">
       <!--<h2>Log In</h2>
